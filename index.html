@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive HTML5 Registration Form with Real-time Client-side JavaScript Validation and Modern Responsive CSS Styling.">
+  <title>Create Your Account | Secure Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-orb glow-orb-1" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-2" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb-3" aria-hidden="true"></div>
+
+  <main class="main-container">
+    <div class="form-wrapper">
+      <!-- Header Section -->
+      <header class="form-header">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Fast &amp; Secure Signup</span>
+        </div>
+        <h1 class="form-title">Create an Account</h1>
+        <p class="form-subtitle">Fill in your details below to register. All fields are required.</p>
+      </header>
+
+      <!-- Registration Form -->
+      <form id="registrationForm" class="registration-form" novalidate>
+        <!-- Full Name Field -->
+        <div class="form-group" id="nameGroup">
+          <label for="fullName" class="form-label">
+            <span>Full Name</span>
+            <span class="required-indicator" aria-hidden="true">*</span>
+          </label>
+          <div class="input-container">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="fullName" 
+              name="fullName" 
+              class="form-input" 
+              placeholder="e.g. Alex Henderson" 
+              autocomplete="name"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="nameError"
+            >
+            <span class="validation-status-icon" aria-hidden="true"></span>
+          </div>
+          <div id="nameError" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group" id="emailGroup">
+          <label for="email" class="form-label">
+            <span>Email Address</span>
+            <span class="required-indicator" aria-hidden="true">*</span>
+          </label>
+          <div class="input-container">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </span>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="alex@example.com" 
+              autocomplete="email"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="emailError"
+            >
+            <span class="validation-status-icon" aria-hidden="true"></span>
+          </div>
+          <div id="emailError" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Phone Number Field -->
+        <div class="form-group" id="phoneGroup">
+          <label for="phone" class="form-label">
+            <span>Phone Number</span>
+            <span class="field-hint">(10 digits)</span>
+            <span class="required-indicator" aria-hidden="true">*</span>
+          </label>
+          <div class="input-container">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </span>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              class="form-input" 
+              placeholder="9876543210" 
+              autocomplete="tel"
+              maxlength="10"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="phoneError phoneCounter"
+            >
+            <span class="phone-digit-counter" id="phoneCounter" aria-hidden="true">0/10</span>
+            <span class="validation-status-icon" aria-hidden="true"></span>
+          </div>
+          <div id="phoneError" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group" id="passwordGroup">
+          <label for="password" class="form-label">
+            <span>Password</span>
+            <span class="required-indicator" aria-hidden="true">*</span>
+          </label>
+          <div class="input-container">
+            <span class="input-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+              </svg>
+            </span>
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              class="form-input password-input" 
+              placeholder="Enter strong password" 
+              autocomplete="new-password"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="passwordError passwordCriteria"
+            >
+            <button 
+              type="button" 
+              id="togglePasswordBtn" 
+              class="toggle-password-btn" 
+              aria-label="Show password"
+              title="Show password"
+            >
+              <svg class="eye-icon" id="eyeIconShow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <svg class="eye-icon hidden" id="eyeIconHide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"></path>
+                <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"></path>
+                <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"></path>
+                <line x1="2" x2="22" y1="2" y2="22"></line>
+              </svg>
+            </button>
+            <span class="validation-status-icon" aria-hidden="true"></span>
+          </div>
+
+          <!-- Strength Meter Bar -->
+          <div class="strength-meter-container" id="strengthMeterContainer">
+            <div class="strength-meter-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="strengthBar"></div>
+            <div class="strength-text-wrap">
+              <span class="strength-label">Password Strength:</span>
+              <span class="strength-rating" id="strengthRating">None</span>
+            </div>
+          </div>
+
+          <!-- Password Live Checklist Criteria -->
+          <div class="password-criteria-list" id="passwordCriteria">
+            <div class="criteria-item" id="critLength">
+              <span class="criteria-icon" aria-hidden="true">&#10005;</span>
+              <span>At least 8 characters</span>
+            </div>
+            <div class="criteria-item" id="critLower">
+              <span class="criteria-icon" aria-hidden="true">&#10005;</span>
+              <span>1 lowercase letter (a-z)</span>
+            </div>
+            <div class="criteria-item" id="critUpper">
+              <span class="criteria-icon" aria-hidden="true">&#10005;</span>
+              <span>1 uppercase letter (A-Z)</span>
+            </div>
+            <div class="criteria-item" id="critNumber">
+              <span class="criteria-icon" aria-hidden="true">&#10005;</span>
+              <span>1 number (0-9)</span>
+            </div>
+            <div class="criteria-item" id="critSymbol">
+              <span class="criteria-icon" aria-hidden="true">&#10005;</span>
+              <span>1 special character (@#$%...)</span>
+            </div>
+          </div>
+
+          <div id="passwordError" class="error-message" role="alert" aria-live="polite"></div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="submitBtn" class="submit-btn">
+          <span class="btn-text">Create Account</span>
+          <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+          <span class="spinner hidden" id="submitSpinner" aria-hidden="true"></span>
+        </button>
+
+        <p class="form-footer-note">
+          By registering, you agree to our Terms of Service and Privacy Policy.
+        </p>
+      </form>
+    </div>
+  </main>
+
+  <!-- Celebratory Success Modal -->
+  <div class="modal-overlay hidden" id="successModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="success-icon-animation">
+        <svg viewBox="0 0 52 52" class="checkmark-svg">
+          <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      </div>
+      <h2 id="modalTitle" class="modal-title">Registration Successful!</h2>
+      <p class="modal-subtitle">Your account has been validated and created successfully.</p>
+      
+      <div class="registered-details-box">
+        <div class="detail-row">
+          <span class="detail-label">Name:</span>
+          <strong class="detail-value" id="submittedName">-</strong>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Email:</span>
+          <strong class="detail-value" id="submittedEmail">-</strong>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Phone:</span>
+          <strong class="detail-value" id="submittedPhone">-</strong>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Security:</span>
+          <span class="detail-badge">Strong Password Verified</span>
+        </div>
+      </div>
+
+      <button type="button" id="closeModalBtn" class="modal-btn">
+        Register Another Account
+      </button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
